@@ -1,0 +1,55 @@
+h, mover el cursor a la izquierda, 1
+j, mover el cursor abajo, 1
+k, mover el cursor arriba, 1
+l, mover el cursor a la derecha, 1
+number + j, mover el cursor number posiciones abajo, 2
+number + k, mover el cursor number posiciones arriba, 2
+H, mover el cursor al principio de la ventana, 1
+M, mover al medio de la ventana, 1
+L, mover al final de la ventana, 1
+w, mover al inicio de la siguiente palabra, 1
+W, mover al inicio de la siguiente palabra ignorando signos de puntuación, 1
+e, mover al final de la siguiente palabra, 1
+e, mover al final de la siguiente palabra ignorando los signos de puntuación, 1
+b, mover al principio de la anterior palabra, 1
+B, mover al principio de la anterior palabra ignorando signos de puntuación, 1
+g + e, mover al final de la anterior palabra, 2
+g + E, mover al final de la anterior palabra ignorando los signos de puntuación, 2
+%, mover hacia el caracter compañero: () / [] / {}, 1
+0, moverse al inicio de la línea, 1
+^, moverse al primer elemento de la linea que no es un espacio, 1
+$, moverse al final de la linea, 1
+g + _, moverse al último elemento de la línea que no es un espacio, 2
+g + g, moverse a la primera linea del documento, 2
+G, moverse a la útlima línea del documento, 1
+number + gg, moverse a la línea number, 2
+g + d, moverse a la declaración local de la variable, 2
+g + D, moverse a la declaración global de la variable, 2
+f + x, moverse a la siguiente ocurrencia del carácter x, 2
+t + x, moverse al caracter anterior a la siguiente ocurrencia del caracter x, 2
+F + x, moverse a la anterior ocurrencia del carácter x, 2
+T + x, moverse al carácter siguiente a la ocurrencia anterior del carácter x, 2
+;, repite el anterior comando fx / tx / Fx / Tx, 1
+}, moverse al siguiente párrafo o función/bloque si estas programando, 1
+{, moverse al anterior párrafo o función/bloque si estas programando, 1
+z + z, centrar el cursor en la pantalla, 2
+z + t, mover el cursor arriba de la pantalla, 2
+z + b, mover el cursor abajo de la pantalla, 2
+O, añade una línea arriba y pasa a modo edición, 1
+w, guarda los cambios del fichero, 1
+q, sale de Neovim. Si no se ha guardado sale error y no podremos salir, 1
+q!, sale de Neovim sin guardar los cambios, 1
+wq, guarda el archivo y luego sale de Neovim, 2
+u, deshace la acción, 1
+Ctrl + r, rehace la acción, 2
+set number, muestra el número de las líneas, 2
+d + numero, borrar un número de líneas, 2
+/"textoBuscar", buscar un texto en el archivo. Al pulsar enter nos lleva a la siguiente aparición, 1
+n, ir a la siguiente aparición de la búsqueda, 1
+N, ir a la anterior aparición de la búsqueda, 1
+G, ir al final del archivo, 1
+Ctrl + d, desplazarse medio archivo hacia abajo, 2
+Ctrl + u, desplazarse medio archivo hacia arriba, 2
+yy, copiar una línea de código, 2
+p, pegar después del cursor, 1
+shift + enter(en archivo), elegir en que parte de la pantalla al dividirla se abre el archivo seleccionado en NvimTree
