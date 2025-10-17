@@ -2,7 +2,6 @@ local funciones = require("BCom.funciones")
 
 local M = {}
 
--- 🧠 Ventana principal de aprendizaje
 function M.ventanaAprender()
   local buf = vim.api.nvim_create_buf(false, true)
   local espacioNombre = vim.api.nvim_create_namespace("bcom")
@@ -38,7 +37,6 @@ function M.ventanaAprender()
     "",
   }
 
-  -- 🔹 Elegimos 5 comandos aleatorios
   for i = 1, 5 do
     local comando, descripcion, difi = funciones.comandoAleatorio()
     table.insert(comandos, {
@@ -51,14 +49,12 @@ function M.ventanaAprender()
 
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lineas)
 
-  -- 🔸 Estilo para el título
   vim.api.nvim_set_hl(0, "bcom", { fg = "#ffcc00", bold = true })
   vim.api.nvim_buf_set_extmark(buf, espacioNombre, 0, 0, {
     end_col = #centered_title,
     hl_group = "bcom",
   })
 
-  -- 🔸 Mapear tecla para mostrar preguntas
   vim.keymap.set("n", "P", function()
     M.mostrarPreguntas(buf, comandos)
   end, { buffer = buf, noremap = true, silent = true })
@@ -71,7 +67,6 @@ end
 
 
 function M.mostrarPreguntas(buf, comandos)
-  -- Limpiar buffer
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, {})
 
   --[[ Convertimos comandos (diccionario) a lista
@@ -84,10 +79,8 @@ function M.mostrarPreguntas(buf, comandos)
   local i = 1
   local aciertos = 0
 
-  -- Función recursiva para preguntas
   for c, d in pairs(comandos) do
     if i > total then
-      -- Mostrar resumen final
       vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "", string.format("🎉 Test completado: %d/%d correctas", aciertos, total) })
       break
     end
@@ -107,7 +100,6 @@ function M.mostrarPreguntas(buf, comandos)
         resultado = "❌ Sin respuesta. El comando sería: " .. d.comando
       end
 
-      -- Agregamos la pregunta y el resultado al buffer
       vim.api.nvim_buf_set_lines(buf, -1, -1, false, { pregunta, resultado, "" })
 
       i = i + 1
@@ -116,45 +108,6 @@ function M.mostrarPreguntas(buf, comandos)
   end
 
 end
-
-
--- 🧩 Ventana de test de preguntas
---[[function M.mostrarPreguntas(buf, comandos)
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {}) -- limpia contenido
-
-    local lineas = { "💥 [BCom] 💥 - Test de comandos", "" }
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lineas)
-
-    local total = #comandos
-    local i = 1
-
-    -- función interna recursiva
-    local function hacerPregunta()
-        if i > total then
-            print("🎉 ¡Has completado el test!")
-            return
-        end
-
-        local c = comandos[i]
-        local pregunta = "¿Qué hace el comando " .. c.comando .. "? "
-
-        vim.ui.input({ prompt = pregunta }, function(respuesta)
-            if respuesta then
-                if respuesta:lower() == c.descripcion:lower() then
-                    print("✅ ¡Correcto!")
-                else
-                    print("❌ No, hace: " .. c.descripcion)
-                end
-            end
-
-            i = i + 1
-            hacerPregunta() -- lanza la siguiente pregunta
-        end)
-    end
-
-    hacerPregunta()
-
-end]]
 
 return M
 

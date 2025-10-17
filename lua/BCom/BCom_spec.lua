@@ -1,8 +1,8 @@
 -- lua/plugins/BCom_spec.lua
 return {
-    "Javillo10/BCom",  -- nombre ficticio, para referencia
+    "Javillo10/BCom", 
     config = function()
-        require("BCom")  -- esto carga tu módulo normal
+        require("BCom") 
     end,
 }
 
