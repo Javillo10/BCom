@@ -1,4 +1,4 @@
-local funciones = require("miPlugins.BCom.funciones")
+local funciones = require("BCom.funciones")
 
 local M = {}
 

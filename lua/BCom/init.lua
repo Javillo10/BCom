@@ -1,18 +1,8 @@
-local funciones = require("miPlugins.BCom.funciones")
-local csv = require("miPlugins.BCom.leerCSV")
-local ventanaInicio = require("miPlugins.BCom.abrirVentanaInicio")
-local ventanAprender = require("miPlugins.BCom.ventanaAprender")
+local M = {}
 
-math.randomseed(os.time())
+M.funciones = require("BCom.funciones")
+M.ventanaAprender = require("BCom.ventanaAprender")
+M.leerCSV = require("BCom.leerCSV")
+M.abrirVentanaInicio = require("BCom.abrirVentanaInicio")
 
-csv.leerCSV()
-ventanaInicio.abrirVentanaInicio()
-
-vim.api.nvim_create_user_command("Bcom", function(opts)
-  funciones.busqueda(opts.args)
-end, {nargs = 1})
-
-vim.api.nvim_create_user_command("BcomA", function()
-    ventanAprender.ventanaAprender()
-end, {})
-
+return M

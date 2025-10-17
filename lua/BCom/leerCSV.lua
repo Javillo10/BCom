@@ -1,4 +1,4 @@
-_CSV = require("miPlugins.BCom.csv")
+_CSV = require("BCom.csv")
 
 local M = {}
 
