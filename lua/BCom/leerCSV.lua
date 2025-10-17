@@ -5,7 +5,9 @@ local M = {}
 function M.leerCSV()
     _COMANDOS = {}
 
-    local rutaabsoluta = vim.fn.stdpath("config") .. "/BCom/comandos.csv"
+    local info = debug.getinfo(1,'S')
+    local script_path = info.source:sub(2):match("(.*/)") -- ruta de este archivo
+    local rutaabsoluta = script_path .. "comandos.csv"
 
     local f = io.open(rutaabsoluta, "r")
 
