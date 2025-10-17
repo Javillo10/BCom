@@ -5,7 +5,7 @@ local M = {}
 function M.leerCSV()
     _COMANDOS = {}
 
-    local rutaabsoluta = vim.fn.stdpath("config") .. "/lua/miPlugins/BCom/comandos.csv"
+    local rutaabsoluta = vim.fn.stdpath("config") .. "/BCom/comandos.csv"
 
     local f = io.open(rutaabsoluta, "r")
 
