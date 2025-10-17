@@ -4,18 +4,28 @@ local M = {}
 
 
 function M.comandoAleatorio()
-    local keys = {}
-    for k, _ in pairs(_COMANDOS) do
-        table.insert(keys, k)
-    end
+  if not _COMANDOS then
+    print("❌ [BCom] No hay comandos cargados. Llama primero a leerCSV().")
+    return nil, nil, nil
+  end
 
+  -- Crear lista de claves
+  local keys = {}
+  for k in pairs(_COMANDOS) do
+    table.insert(keys, k)
+  end
 
+  -- Elegir aleatorio
+  local cmd = keys[math.random(#keys)]
+  local info = _COMANDOS[cmd]
 
-    local comando = keys[math.random(1, #keys)]
-    local info = _COMANDOS[comando]
+  if not info then
+    print("⚠️ [BCom] No se encontró información para el comando: " .. tostring(cmd))
+    return cmd, "Descripción no disponible", "?"
+  end
 
-    return comando, info.descripcion, info.dificultad
-end 
+  return cmd, info.descripcion, info.dificultad
+end
 
 
 function M.busqueda(comando)
